@@ -24,6 +24,10 @@ app.use(fileUpload());
 app.use(express.static('public'));
 app.use(passport.initialize());
 
+app.get("/", (req,res)=>{
+    res.send("wowoowowWAWAWAWAWowowowo");
+})
+
 passport.use("auth", new BearerStrategy((token, done) => {
     console.log(token);
     jwt.verify(token, "secretkey", (error, decoded) => {
@@ -45,4 +49,5 @@ app.post("/api/validatetoken", passport.authenticate("auth", { session: false })
 app.use("/api/employee", employeeRoutes(passport));
 app.use("/api/user", userRoutes);
 
-app.listen(3000);
+// app.listen(3000);
+app.listen(process.env.PORT || 3000);
