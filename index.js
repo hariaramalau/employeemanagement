@@ -24,10 +24,6 @@ app.use(fileUpload());
 app.use(express.static('public'));
 app.use(passport.initialize());
 
-app.get("/", (req,res)=>{
-    res.send("wowoowowWAWAWAWAWowowowo");
-})
-
 passport.use("auth", new BearerStrategy((token, done) => {
     console.log(token);
     jwt.verify(token, "secretkey", (error, decoded) => {
